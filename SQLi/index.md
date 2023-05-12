@@ -113,3 +113,13 @@ Depending on the nature of the vulnerability and the database involved, the foll
 You can change the logic of the query to trigger a detectable difference in the application's response depending on the truth of a single condition. This might involve injecting a new condition into some Boolean logic, or conditionally triggering an error such as a divide-by-zero.
 You can conditionally trigger a time delay in the processing of the query, allowing you to infer the truth of the condition based on the time that the application takes to respond.
 You can trigger an out-of-band network interaction, using OAST techniques. This technique is extremely powerful and works in situations where the other techniques do not. Often, you can directly exfiltrate data via the out-of-band channel, for example by placing the data into a DNS lookup for a domain that you control.
+
+<h3> How to detect SQL injection vulnerabilities </h3>
+
+SQL injection can be detected manually by using a systematic set of tests against every entry point in the application. This typically involves:
+
+- Submitting the single quote character ' and looking for errors or other anomalies.
+- Submitting some SQL-specific syntax that evaluates to the base (original) value of the entry point, and to a different value, and looking for systematic differences in the resulting application responses.
+- Submitting Boolean conditions such as OR 1=1 and OR 1=2, and looking for differences in the application's responses.
+- Submitting payloads designed to trigger time delays when executed within a SQL query, and looking for differences in the time taken to respond.
+- Submitting OAST payloads designed to trigger an out-of-band network interaction when executed within a SQL query, and monitoring for any resulting interactions.

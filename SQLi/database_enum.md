@@ -54,3 +54,19 @@ MyDatabase     dbo           Users       Password     varchar
 ```
 
 This output shows the columns in the specified table and the data type of each column.
+
+<h3> Equivalent to information schema on Oracle </h3>
+
+On Oracle, you can obtain the same information with slightly different queries.
+
+You can list tables by querying all_tables:
+
+```sql
+SELECT * FROM all_tables
+```
+
+And you can list columns by querying all_tab_columns:
+
+```sql
+SELECT * FROM all_tab_columns WHERE table_name = 'USERS'
+```

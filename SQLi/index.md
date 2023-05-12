@@ -123,3 +123,22 @@ SQL injection can be detected manually by using a systematic set of tests agains
 - Submitting Boolean conditions such as OR 1=1 and OR 1=2, and looking for differences in the application's responses.
 - Submitting payloads designed to trigger time delays when executed within a SQL query, and looking for differences in the time taken to respond.
 - Submitting OAST payloads designed to trigger an out-of-band network interaction when executed within a SQL query, and monitoring for any resulting interactions.
+
+<h3> SQL injection in different contexts </h3>
+
+You can perform SQL injection attacks using any controllable input that is processed as a SQL query by the application. For example, some websites take input in JSON or XML format and use this to query the database.
+
+These different formats may even provide alternative ways for you to obfuscate attacks that are otherwise blocked due to WAFs and other defense mechanisms. Weak implementations often just look for common SQL injection keywords within the request, so you may be able to bypass these filters by simply encoding or escaping characters in the prohibited keywords. For example, the following XML-based SQL injection uses an XML escape sequence to encode the S character in SELECT:
+
+```xml
+<stockCheck>
+    <productId>
+        123
+    </productId>
+    <storeId>
+        999 &#x53;ELECT * FROM information_schema.tables
+    </storeId>
+</stockCheck>
+```
+
+This will be decoded server-side before being passed to the SQL interpreter.

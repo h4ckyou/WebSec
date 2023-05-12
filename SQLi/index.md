@@ -87,3 +87,19 @@ then an attacker can submit the input:
 ```
 
 This will cause the application to return all usernames and passwords along with the names and descriptions of products.
+
+<h3> Examining the database </h3>
+  
+Following initial identification of a SQL injection vulnerability, it is generally useful to obtain some information about the database itself. This information can often pave the way for further exploitation.
+
+You can query the version details for the database. The way that this is done depends on the database type, so you can infer the database type from whichever technique works. For example, on Oracle you can execute:
+
+```sql
+SELECT * FROM v$version
+```
+ 
+You can also determine what database tables exist, and which columns they contain. For example, on most databases you can execute the following query to list the tables:
+
+```sql
+SELECT * FROM information_schema.tables
+```

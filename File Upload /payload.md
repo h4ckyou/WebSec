@@ -7,7 +7,7 @@ FF D8 FF EE
 .htaccess bypass:
 
 ```
-AddType application/x-httpd-php .php
+AddType application/x-httpd-php .jpg
 ```
 
 Manipulating image metadata:

